@@ -161,8 +161,14 @@
     }
 
     .back-link:hover {
-      background-color: var(--secondary-color);
+      background-color: var(--primary-color);
+      text-decoration: none;
       transform: translateY(-2px);
+    }
+
+    .back-link:visited {
+      color: white;
+      background-color: var(--primary-color);
     }
 
     .back-link::before {
@@ -207,7 +213,7 @@
           {{ content }}
         </div>
 
-        <a href="{{ '/' | relative_url }}" class="back-link">← 返回首页</a>
+        <a href="{{ '/' | relative_url }}" class="back-link"> 返回首页</a>
       </article>
     </div>
   </main>
