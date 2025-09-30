@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+  <style>
+    /* 全局样式变量 */
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #34495e;
+      --text-color: #333;
+      --text-light: #7f8c8d;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* 时间线样式 */
+    .timeline-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      padding: 15px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border: 4px solid var(--primary-color);
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .timeline-item:hover::after {
+      transform: translateY(-50%) scale(1.2);
+      background-color: var(--primary-color);
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .left::after {
+      right: -16px;
+    }
+
+    .right::after {
+      left: -16px;
+    }
+
+    .timeline-content {
+      padding: 25px 30px;
+      background-color: white;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .timeline-title {
+      margin-top: 0;
+      color: var(--secondary-color);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline-title a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .timeline-title a:hover {
+      color: var(--primary-color);
+    }
+
+    .timeline-date {
+      color: var(--text-light);
+      font-size: 0.95em;
+      margin-bottom: 15px;
+      display: inline-block;
+      background-color: var(--light-color);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .read-more {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      margin-top: 10px;
+    }
+
+    .read-more:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* 响应式设计 */
+    @media screen and (max-width: 768px) {
+      .timeline-container::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 15px;
+      }
+
+      .left::after, .right::after {
+        left: 15px;
+      }
+
+      .right {
+        left: 0%;
+      }
+    }
+
+    /* 页面标题样式 */
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--secondary-color);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      border-radius: 3px;
+    }
+
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  </style>
+</head>
+<body>
+  {%- include navbar.html -%}
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="title-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/town.jpg') center/cover; padding: 60px 20px; margin-bottom: 40px; border-radius: 10px;">
+  <h1 class="page-title" style="color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">欢迎来到竹空谷</h1>
+  <p style="color: #eee; max-width: 800px; margin: 20px auto; font-size: 1.1rem; line-height: 1.6;">这里是我们服务器的官方博客，记录着服务器的发展历程、活动公告和精彩瞬间。通过下方的时间线，您可以了解我们服务器的成长故事。</p>
+</div>
+
+      <div class="timeline-container">
+        {% for post in site.posts reversed %}
+          {% assign loopindex = forloop.index | modulo: 2 %}
+          <div class="timeline-item {% if loopindex == 0 %}left{% else %}right{% endif %}">
+            <div class="timeline-content">
+              <h2 class="timeline-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+              <div class="timeline-date">{{ post.date | date: "%Y年%m月%d日" }}</div>
+              {% if post.categories.size > 0 %}
+              <div class="timeline-category">分类: {{ post.categories | join: ", " }}</div>
+              {% endif %}
+              <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+              <a href="{{ post.url | relative_url }}" class="read-more">阅读更多</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    <script>
+      // 时间线滚动动画
+      document.addEventListener('DOMContentLoaded', function() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        timelineItems.forEach(item => {
+          observer.observe(item);
+        });
+      });
+    </script>
+    </div>
+  </main>
+
+  {%- include footer.html -%}
+</body>
+</html>
