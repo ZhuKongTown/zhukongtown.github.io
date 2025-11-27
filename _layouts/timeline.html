@@ -24,9 +24,20 @@
     /* 时间线样式 */
     .timeline-container {
       position: relative;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 40px 0;
+      padding: 40px 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* 调整主容器宽度 */
+    .wrapper {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .timeline-container::after {
@@ -64,15 +75,15 @@
       height: 24px;
       background-color: white;
       border: 4px solid var(--primary-color);
-      top: 50%;
-      transform: translateY(-50%);
+      top: 30px;
+      transform: translateY(0);
       border-radius: 50%;
       z-index: 1;
       transition: var(--transition);
     }
 
     .timeline-item:hover::after {
-      transform: translateY(-50%) scale(1.2);
+      transform: scale(1.2);
       background-color: var(--primary-color);
     }
 
@@ -106,6 +117,60 @@
     .timeline-content:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 帖子图片样式 */
+    .timeline-image {
+      margin: 15px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background-color: var(--light-color);
+      height: 200px;
+    }
+
+    .timeline-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .timeline-image img:hover {
+      transform: scale(1.02);
+    }
+
+    /* 图片加载状态 */
+    .timeline-image img {
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 图片占位符 */
+    .timeline-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      z-index: 0;
+    }
+
+    .timeline-image img {
+      position: relative;
+      z-index: 1;
     }
 
     .timeline-title {
@@ -163,6 +228,7 @@
     @media screen and (max-width: 768px) {
       .timeline-container::after {
         left: 31px;
+        margin-left: 0;
       }
 
       .timeline-item {
@@ -173,10 +239,14 @@
 
       .timeline-item::after {
         left: 15px;
+        right: auto;
+        top: 30px;
       }
 
       .left::after, .right::after {
         left: 15px;
+        right: auto;
+        top: 30px;
       }
 
       .right {
@@ -317,6 +387,27 @@
       <div class="timeline-container">
         {% for post in site.posts %}
           {% assign loopindex = forloop.index | modulo: 2 %}
+          
+          <!-- 提取帖子中的第一张图片 -->
+          {% assign post_content = post.content %}
+          {% assign has_image = false %}
+          {% assign first_image = '' %}
+          
+          <!-- 检查帖子是否包含图片标签 -->
+          {% if post_content contains '<img' %}
+            {% assign img_tag = post_content | split: '<img' | shift | first %}
+            {% if img_tag contains 'src=' %}
+              {% assign src_part = img_tag | split: 'src=' | shift | first %}
+              {% if src_part contains '"' %}
+                {% assign first_image = src_part | split: '"' | shift | first %}
+                {% assign has_image = true %}
+              {% elsif src_part contains "'" %}
+                {% assign first_image = src_part | split: "'" | shift | first %}
+                {% assign has_image = true %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+          
           <div class="timeline-item {% if loopindex == 0 %}left{% else %}right{% endif %}">
             <div class="timeline-content">
               <h2 class="timeline-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
@@ -324,6 +415,14 @@
               {% if post.categories.size > 0 %}
               <div class="timeline-category">分类: {{ post.categories | join: ", " }}</div>
               {% endif %}
+              
+              <!-- 如果有图片，显示图片 -->
+              {% if has_image and first_image != '' %}
+              <div class="timeline-image">
+                <img src="{{ first_image }}" alt="{{ post.title }}" loading="lazy">
+              </div>
+              {% endif %}
+              
               <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
               <a href="{{ post.url | relative_url }}" class="read-more">阅读更多</a>
             </div>
