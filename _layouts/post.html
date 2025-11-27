@@ -26,7 +26,9 @@
       max-width: 800px;
       margin: 30px auto;
       padding: 30px;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 10px;
       box-shadow: var(--shadow);
       position: relative;
@@ -162,6 +164,7 @@
 
     .back-link:hover {
       background-color: var(--primary-color);
+      color: white;
       text-decoration: none;
       transform: translateY(-2px);
     }
@@ -180,7 +183,34 @@
     html {
       scroll-behavior: smooth;
     }
-  </style>
+
+    /* 全局背景样式 */
+    body {
+      background-image: url('/assets/town.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header 和 Footer 模糊效果 */
+    header.site-header {
+      background-color: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    footer.site-footer {
+      background-color: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>

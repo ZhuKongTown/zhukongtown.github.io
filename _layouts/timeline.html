@@ -94,7 +94,7 @@
 
     .timeline-content {
       padding: 25px 30px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.75);
       position: relative;
       border-radius: 10px;
       box-shadow: var(--shadow);
@@ -149,6 +149,7 @@
 
     .read-more:hover {
       background-color: var(--primary-color);
+      color: white;
       text-decoration: none;
       transform: translateY(-2px);
     }
@@ -212,7 +213,7 @@
       margin-bottom: 40px;
       border-radius: 10px;
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
@@ -225,6 +226,42 @@
       font-size: 1.1rem;
       line-height: 1.6;
       text-shadow: none;
+    }
+
+    /* 按钮容器样式 */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* 加入按钮样式 */
+    .join-button {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      font-size: 1.1rem;
+    }
+
+    .join-button:hover {
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .join-button:visited {
+      color: white;
+      background-color: var(--primary-color);
     }
 
     /* 平滑滚动 */
@@ -246,14 +283,14 @@
 
     /* Header 和 Footer 模糊效果 */
     header.site-header {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
 
     footer.site-footer {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
@@ -271,10 +308,14 @@
   <p>竹空谷是一个Minecraft公益服务器，致力于为玩家提供一个和谐、有趣的游戏环境。</p>
   <p>这里是我们服务器的官方博客，记录着服务器的发展历程、活动公告和精彩瞬间。</p>
   <p>通过下方的时间线，您可以了解我们服务器的成长故事。</p>
+  <div class="button-container">
+    <a href="https://qm.qq.com/q/gM7VWLfdq" class="join-button" target="_blank">加入主群</a>
+    <a href="https://qm.qq.com/q/hTnDHt2PDy" class="join-button" target="_blank">加入副群</a>
+  </div>
 </div>
 
       <div class="timeline-container">
-        {% for post in site.posts reversed %}
+        {% for post in site.posts %}
           {% assign loopindex = forloop.index | modulo: 2 %}
           <div class="timeline-item {% if loopindex == 0 %}left{% else %}right{% endif %}">
             <div class="timeline-content">
