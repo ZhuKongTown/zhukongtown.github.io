@@ -1,6 +1,6 @@
 <header class="site-header" role="banner">
   <div class="wrapper">
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}"><img src="{{ '/assets/favicon.ico' | relative_url }}" alt="Logo" style="vertical-align: middle; margin-right: 10px; height: 48px; width: 48px;">{{ site.title }}</a>
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}"><img src="{{ '/assets/large.png' | relative_url }}" alt="Logo" style="vertical-align: middle; margin-right: 10px; height: 64x; width: 64px;"></a>
     <nav class="site-nav">
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />
       <label for="nav-trigger">
@@ -12,7 +12,7 @@
       </label>
       <div class="trigger">
         {%- for page in site.pages -%}
-          {%- if page.title -%}
+          {%- if page.title and page.title != '关于我们' -%}
           <a class="page-link" href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
           {%- endif -%}
         {%- endfor -%}

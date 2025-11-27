@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+  <link rel="icon" href="{{ '/large.png' | relative_url }}" type="image/x-icon">
   <style>
     /* 全局样式变量 */
     :root {
@@ -39,6 +39,7 @@
       left: 50%;
       margin-left: -2px;
       border-radius: 2px;
+      z-index: -1;
     }
 
     .timeline-item {
@@ -93,11 +94,13 @@
 
     .timeline-content {
       padding: 25px 30px;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.8);
       position: relative;
       border-radius: 10px;
       box-shadow: var(--shadow);
       transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .timeline-content:hover {
@@ -183,10 +186,12 @@
     /* 页面标题样式 */
     .page-title {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       color: var(--secondary-color);
+      text-shadow: none;
       position: relative;
       padding-bottom: 15px;
+      font-size: 2.5rem;
     }
 
     .page-title::after {
@@ -201,11 +206,59 @@
       border-radius: 3px;
     }
 
+    /* 标题区域样式 */
+    .title-section {
+      padding: 60px 20px;
+      margin-bottom: 40px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .title-section p {
+      color: var(--text-color);
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-shadow: none;
+    }
+
     /* 平滑滚动 */
     html {
       scroll-behavior: smooth;
     }
-  </style>
+
+    /* 全局背景样式 */
+    body {
+      background-image: url('/assets/town.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header 和 Footer 模糊效果 */
+    header.site-header {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    footer.site-footer {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
@@ -213,9 +266,11 @@
 
   <main class="page-content" aria-label="Content">
     <div class="wrapper">
-      <div class="title-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/town.jpg') center/cover; padding: 60px 20px; margin-bottom: 40px; border-radius: 10px;">
-  <h1 class="page-title" style="color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">欢迎来到竹空谷</h1>
-  <p style="color: #eee; max-width: 800px; margin: 20px auto; font-size: 1.1rem; line-height: 1.6;">这里是我们服务器的官方博客，记录着服务器的发展历程、活动公告和精彩瞬间。通过下方的时间线，您可以了解我们服务器的成长故事。</p>
+      <div class="title-section">
+  <h1 class="page-title">欢迎来到竹空谷</h1>
+  <p>竹空谷是一个Minecraft公益服务器，致力于为玩家提供一个和谐、有趣的游戏环境。</p>
+  <p>这里是我们服务器的官方博客，记录着服务器的发展历程、活动公告和精彩瞬间。</p>
+  <p>通过下方的时间线，您可以了解我们服务器的成长故事。</p>
 </div>
 
       <div class="timeline-container">
