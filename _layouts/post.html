@@ -21,9 +21,16 @@
       --transition: all 0.3s ease;
     }
 
+    /* 页面容器样式 */
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     /* 文章详情页样式 */
     .post-container {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 30px auto;
       padding: 30px;
       background-color: rgba(255, 255, 255, 0.75);
@@ -203,7 +210,7 @@
 
     /* 全局背景样式 */
     body {
-      background-image: url('/assets/town.jpg');
+      background-image: url('/assets/town2.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -253,7 +260,6 @@
             {% if page.author %}
               • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
             {% endif %}
-          </p>
         </header>
 
         <div class="post-content" itemprop="articleBody">
