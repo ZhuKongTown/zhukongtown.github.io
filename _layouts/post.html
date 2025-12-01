@@ -184,6 +184,23 @@
       scroll-behavior: smooth;
     }
 
+    /* 页面进入动画 */
+    .post-container {
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     /* 全局背景样式 */
     body {
       background-image: url('/assets/town.jpg');
