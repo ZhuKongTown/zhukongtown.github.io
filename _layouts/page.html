@@ -122,6 +122,7 @@
       margin-bottom: 15px;
     }
 
+    /* 文章内容样式 */
     .post-content {
       color: var(--text-color);
       line-height: 1.8;
@@ -130,6 +131,18 @@
 
     .post-content p {
       margin-bottom: 20px;
+    }
+
+    /* 图片样式 */
+    .post-content img {
+      border-radius: 10px;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .post-content img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
 
     /* 标题样式调整 */

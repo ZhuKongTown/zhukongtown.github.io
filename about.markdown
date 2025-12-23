@@ -17,6 +17,28 @@ permalink: /about/
 - **定期活动**：举办各种有趣的活动，包括周年庆，新年活动等
 - **友好管理**：管理员团队热情友好，及时解决玩家问题
 
+## 💝看板娘
+
+<div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 300px;">
+    <p>看板娘的形象最早设计于2024年7月</p>
+    <p>以绿色为主色调，头戴竹叶发饰，白发绿瞳，手中举着画有竹空谷logo的牌子</p>
+    <p>得益于AI绘画的进步，我们于2025年12月重绘了看板娘的形象，并在大家面前第一次亮相</p>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <figure style="margin: 0;">
+      <img src="/assets/board_old.jpg" alt="看板娘初稿" style="max-width: 300px; height: auto;">
+      <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 5px;">看板娘初稿</figcaption>
+    </figure>
+  </div>
+</div>
+
+<figure style="margin: 20px auto; text-align: center;">
+  <img src="/assets/board.jpg" alt="首次亮相" style="width: auto; height: auto; display: block; margin: 20px auto;">
+  <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 5px;">首次亮相</figcaption>
+</figure>
+
+
 ## 👥主要成员
 ### 管理组
 <div class="players-section">
@@ -66,13 +88,17 @@ permalink: /about/
 
 ## 🏠加入我们
 
-如果你也喜欢Minecraft，欢迎加入我们的大家庭！你可以通过以下方式联系我们：
+如果你也喜欢Minecraft，不论是养老，建筑还是生电玩家，欢迎加入我们的大家庭！
 
 - **QQ群**：[加入我们](https://qm.qq.com/q/il49CORpGo)
 - **服务器IP**：请加入QQ群获取最新IP地址
 
-Q：你说你们2017年就成立了那为什么QQ群是2025年才创建的？
 
-A：🥺群主（吉祥物）的QQ号被永封了（发瑟图发的😡），所以只能换个群了
+> Q&A  
+> Q：你说你们2017年就成立了那为什么QQ群是2025年才创建的？  
+> A：🥺群主（吉祥物）的QQ号被永封了（发瑟图发的😡），所以只能换个群了
 
 感谢大家对竹空谷服务器的支持和关注！
+
+
+
